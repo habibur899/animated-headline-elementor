@@ -4,7 +4,7 @@ Donate link: #
 Tags: elementor,animated, headline, clip, slide, zoom, type, rotate
 Requires at least: 4.7
 Tested up to: 5.9
-Stable tag: 1.0.0
+Stable tag: trunk
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 Enhance your Elementor page building experience with elementor headline elements. Add powers to your page builder 
-using our easy-to-use elements those were designed to make your next WordPress page design easier and 
+using our easy-to-use elements those were designed to make your next WordPress page design easier and
 prettier than ever before.
 
 == Completely Customizable ==
@@ -23,7 +23,7 @@ Each element comes with a bunch of options to customize your website in every po
 == Frequently Asked Questions ==
 
 = Does Animated Headline work with all the themes?  =
-Animated Headline works all the themes that respect the coding standards of WordPress set by its Codex. It is recommended to use Elementor’s Hello Theme, a lightweight blank canvas, 
+Animated Headline works all the themes that respect the coding standards of WordPress set by its Codex. It is recommended to use Elementor’s Hello Theme, a lightweight blank canvas,
 to enjoy full flexibility when using Elementor, and optimize your experience.
 
 = How do I install This Plugin ?  =
@@ -47,5 +47,5 @@ No! Elementor provides you with all the widgets and features that you need to bu
 
 1. 10 Animation Effect
 1. Fully Customizable
-1. Fully Responsive 
+1. Fully Responsive
 

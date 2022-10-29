@@ -214,7 +214,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 				'label'      => __( 'Margin', 'animated-headline-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .cd-intro' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				],
 			]
@@ -225,7 +225,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 				'label'      => __( 'Padding', 'animated-headline-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .cd-intro' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				],
 			]
@@ -355,11 +355,12 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		$settings     = $this->get_settings_for_display();
 		$before_title = $settings['animated_headline_before_title'];
 		$after_title  = $settings['animated_headline_after_title'];
-		?>
-        <section class="cd-intro">
-            <h1 class="cd-headline clip is-full-width">
-                <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
-                <span class="cd-words-wrapper">
+		if ( $settings['animated_headline_animation_type'] == 'rotate1' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline rotate-1">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
                 <?php
                 $i = "";
                 foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
@@ -370,10 +371,191 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
                     <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
                 <?php endforeach; ?>
 			</span>
-                <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
-            </h1>
-        </section>
-		<?php
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'type' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline letters type">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'rotate2' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline letters rotate-2">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'loading_bar' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline loading-bar">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'slide' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline slide">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'clip' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline clip is-full-width">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'zoom' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline zoom">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'rotate3' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline letters rotate-3">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else if ( $settings['animated_headline_animation_type'] == 'scale' ) {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline letters scale">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		} else {
+			?>
+            <section class="cd-intro">
+                <h1 class="cd-headline push">
+                    <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                    <span class="cd-words-wrapper">
+                <?php
+                $i = "";
+                foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
+	                $class = $i == 1 ? 'visible' : 'hidden';
+	                $i ++;
+	                $clip_title = $animated_headline_list['animated_headline_title'];
+	                ?>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                <?php endforeach; ?>
+			</span>
+                    <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+                </h1>
+            </section>
+			<?php
+		}
 
 	}
 

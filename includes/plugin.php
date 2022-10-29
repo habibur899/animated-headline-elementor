@@ -214,6 +214,7 @@ final class Elementor_Animated_Headline {
 	public function init() {
 
 		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
+		add_action( 'elementor/elements/categories_registered', [$this, 'custom_animated_headline_widget_categories' ] );
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'animated_heading_style' ] );
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'animated_heading_script' ] );
 		// Register widget scripts
@@ -255,6 +256,20 @@ final class Elementor_Animated_Headline {
 
 		$widgets_manager->register( new Animated_Headline_Elementor_Widget() );
 
+	}
+	/**
+	 * Register Category
+	 */
+
+	function custom_animated_headline_widget_categories( $elements_manager ) {
+
+		$elements_manager->add_category(
+			'animated_headline-category',
+			[
+				'title' => esc_html__( 'Animated Headline', 'animated-headline-elementor' ),
+				'icon' => 'fa fa-plug',
+			]
+		);
 	}
 
 

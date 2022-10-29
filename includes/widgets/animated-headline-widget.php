@@ -96,7 +96,7 @@ class Animated_Headline_Elementor_Widget extends Widget_Base {
 	 * @access public
 	 */
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'animated_headline-category' ];
 	}
 
 	/**

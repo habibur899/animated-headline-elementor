@@ -155,8 +155,8 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 			[
 				'label'       => esc_html__( 'Before Text', 'animated-headline-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Before Title', 'animated-headline-elementor' ),
-				'placeholder' => esc_html__( 'Before Title', 'animated-headline-elementor' ),
+				'default'     => esc_html__( 'Before Text', 'animated-headline-elementor' ),
+				'placeholder' => esc_html__( 'Before Text', 'animated-headline-elementor' ),
 			]
 		);
 
@@ -165,8 +165,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 			[
 				'label'       => esc_html__( 'After Text', 'animated-headline-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'After Title', 'animated-headline-elementor' ),
-				'placeholder' => esc_html__( 'After Title', 'animated-headline-elementor' ),
+				'placeholder' => esc_html__( 'After Text', 'animated-headline-elementor' ),
 			]
 		);
 
@@ -193,6 +192,12 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 					[
 						'animated_headline_title' => esc_html__( 'Designer', 'animated-headline-elementor' ),
 					],
+					[
+						'animated_headline_title' => esc_html__( 'Developer', 'animated-headline-elementor' ),
+					],
+					[
+						'animated_headline_title' => esc_html__( 'UI/UX', 'animated-headline-elementor' ),
+					]
 
 				],
 				'title_field' => '{{{ animated_headline_title }}}',

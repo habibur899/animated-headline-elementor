@@ -141,7 +141,7 @@ final class Elementor_Animated_Headline {
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: Elementor */
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'animated-headline-elementor' ),
-			'<strong>' . esc_html__( 'Elementor Test Addon', 'animated-headline-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Animated Headline', 'animated-headline-elementor' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'animated-headline-elementor' ) . '</strong>'
 		);
 
@@ -166,7 +166,7 @@ final class Elementor_Animated_Headline {
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'animated-headline-elementor' ),
-			'<strong>' . esc_html__( 'Elementor Test Addon', 'animated-headline-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Animated Headline', 'animated-headline-elementor' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'animated-headline-elementor' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
@@ -192,7 +192,7 @@ final class Elementor_Animated_Headline {
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'animated-headline-elementor' ),
-			'<strong>' . esc_html__( 'Elementor Test Addon', 'animated-headline-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Animated Headline', 'animated-headline-elementor' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'animated-headline-elementor' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);

@@ -109,7 +109,7 @@ class Animated_Headline_Elementor_Widget extends Widget_Base {
 	 * @access public
 	 */
 	public function get_keywords() {
-		return [ 'animated', 'headline', 'rotate', 'type', 'zoom', 'push', 'slide', 'scale' ];
+		return [ 'elementor','animated', 'headline', 'rotate', 'type', 'zoom', 'push', 'slide', 'scale' ];
 	}
 
 	/**

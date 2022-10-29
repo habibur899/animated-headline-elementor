@@ -153,7 +153,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'animated_headline_before_title',
 			[
-				'label'       => esc_html__( 'Before Title', 'animated-headline-elementor' ),
+				'label'       => esc_html__( 'Before Text', 'animated-headline-elementor' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'Before Title', 'animated-headline-elementor' ),
 				'placeholder' => esc_html__( 'Before Title', 'animated-headline-elementor' ),
@@ -163,7 +163,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'animated_headline_after_title',
 			[
-				'label'       => esc_html__( 'After Title', 'animated-headline-elementor' ),
+				'label'       => esc_html__( 'After Text', 'animated-headline-elementor' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'After Title', 'animated-headline-elementor' ),
 				'placeholder' => esc_html__( 'After Title', 'animated-headline-elementor' ),
@@ -184,18 +184,18 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'animated_headline_list',
 			[
-				'label'  => esc_html__( 'Clip List', 'animated-headline-elementor' ),
+				'label'  => esc_html__( 'Animation Text List', 'animated-headline-elementor' ),
 				'type'   => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 
 				'default'     => [
 
 					[
-						'title' => esc_html__( 'Designer', 'animated-headline-elementor' ),
+						'animated_headline_title' => esc_html__( 'Designer', 'animated-headline-elementor' ),
 					],
 
 				],
-				'title_field' => '{{{ title }}}',
+				'title_field' => '{{{ animated_headline_title }}}',
 			]
 		);
 

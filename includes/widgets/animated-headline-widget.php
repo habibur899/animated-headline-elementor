@@ -4,6 +4,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
+use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -16,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
+class Animated_Headline_Elementor_Widget extends Widget_Base {
 
 	/**
 	 * Get widget name.

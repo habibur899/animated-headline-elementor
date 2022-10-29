@@ -216,8 +216,16 @@ final class Elementor_Animated_Headline {
 		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'animated_heading_style' ] );
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'animated_heading_script' ] );
+		// Register widget scripts
+		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'animated_heading_widget_scripts' ] );
 
 	}
+
+	//Define editor script
+	public function animated_heading_widget_scripts() {
+		wp_register_script( 'animated-headline-elementor', plugins_url( '../assets/js/editor/animated-headline.js', __FILE__ ), [ 'jquery' ], false, true );
+	}
+
 
 	//CSS
 	public function animated_heading_style() {

@@ -1,6 +1,8 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Text_Shadow;
+use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -69,6 +71,21 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 	}
 
 	/**
+	 * Retrieve the list of scripts the widget depended on.
+	 *
+	 * Used to set scripts dependencies required to run the widget.
+	 *
+	 * @return array Widget scripts dependencies.
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 *
+	 */
+	public function get_script_depends() {
+		return [ 'animated-headline-elementor' ];
+	}
+
+	/**
 	 * Get widget categories.
 	 *
 	 * Retrieve the list of categories the Animated headline widget belongs to.
@@ -91,7 +108,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 	 * @access public
 	 */
 	public function get_keywords() {
-		return [ 'animated', 'headline', 'clip', 'slide', 'zoom', 'push' ];
+		return [ 'animated', 'headline', 'rotate', 'type', 'zoom', 'push', 'slide', 'scale' ];
 	}
 
 	/**
@@ -111,11 +128,33 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
+
+		$this->add_control(
+			'animated_headline_animation_type',
+			[
+				'label'   => esc_html__( 'Animation Type', 'animated-headline-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'clip',
+				'options' => [
+					'rotate1'     => esc_html__( 'Rotate 1', 'animated-headline-elementor' ),
+					'type'        => esc_html__( 'Type', 'animated-headline-elementor' ),
+					'rotate2'     => esc_html__( 'Rotate 2', 'animated-headline-elementor' ),
+					'loading_bar' => esc_html__( 'Loading Bar', 'animated-headline-elementor' ),
+					'slide'       => esc_html__( 'Slide', 'animated-headline-elementor' ),
+					'clip'        => esc_html__( 'Clip', 'animated-headline-elementor' ),
+					'zoom'        => esc_html__( 'Zoom', 'animated-headline-elementor' ),
+					'rotate3'     => esc_html__( 'Rotate 3', 'animated-headline-elementor' ),
+					'scale'       => esc_html__( 'Scale', 'animated-headline-elementor' ),
+					'push'        => esc_html__( 'Push', 'animated-headline-elementor' ),
+				]
+			]
+		);
+
 		$this->add_control(
 			'animated_headline_before_title',
 			[
 				'label'       => esc_html__( 'Before Title', 'animated-headline-elementor' ),
-				'type'        => \Elementor\Controls_Manager::TEXT,
+				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'Before Title', 'animated-headline-elementor' ),
 				'placeholder' => esc_html__( 'Before Title', 'animated-headline-elementor' ),
 			]
@@ -125,7 +164,7 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 			'animated_headline_after_title',
 			[
 				'label'       => esc_html__( 'After Title', 'animated-headline-elementor' ),
-				'type'        => \Elementor\Controls_Manager::TEXT,
+				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'After Title', 'animated-headline-elementor' ),
 				'placeholder' => esc_html__( 'After Title', 'animated-headline-elementor' ),
 			]
@@ -161,7 +200,146 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
+		// Global Style Tab
+		$this->start_controls_section(
+			'global_style_section',
+			[
+				'label' => esc_html__( 'Style', 'animated-headline-elementor' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_responsive_control(
+			'global_margin',
+			[
+				'label'      => __( 'Margin', 'animated-headline-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .cd-intro' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'global_padding',
+			[
+				'label'      => __( 'Padding', 'animated-headline-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .cd-intro' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				],
+			]
+		);
 
+		$this->end_controls_section();
+		// Before Style Tab
+		$this->start_controls_section(
+			'before_style_section',
+			[
+				'label' => esc_html__( 'Before Style', 'animated-headline-elementor' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'before_text_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'animated-headline-elementor' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .before_title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'before_content_typography',
+				'selector' => '{{WRAPPER}} .before_title',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name'     => 'before_text_shadow',
+				'label'    => esc_html__( 'Text Shadow', 'animated-headline-elementor' ),
+				'selector' => '{{WRAPPER}} .before_title',
+			]
+		);
+
+		$this->end_controls_section();
+		// Animated Style Tab
+		$this->start_controls_section(
+			'animated_style_section',
+			[
+				'label' => esc_html__( 'Animated Style', 'animated-headline-elementor' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'animated_text_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'animated-headline-elementor' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .animated_style' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'animated_content_typography',
+				'selector' => '{{WRAPPER}} .animated_style',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name'     => 'animated_text_shadow',
+				'label'    => esc_html__( 'Text Shadow', 'animated-headline-elementor' ),
+				'selector' => '{{WRAPPER}} .animated_style',
+			]
+		);
+
+		$this->end_controls_section();
+		//After Style Tab
+		$this->start_controls_section(
+			'after_style_section',
+			[
+				'label' => esc_html__( 'After Style', 'animated-headline-elementor' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'after_text_color',
+			[
+				'label'     => esc_html__( 'Text Color', 'animated-headline-elementor' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .after_title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'after_content_typography',
+				'selector' => '{{WRAPPER}} .after_title',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name'     => 'after_text_shadow',
+				'label'    => esc_html__( 'Text Shadow', 'animated-headline-elementor' ),
+				'selector' => '{{WRAPPER}} .after_title',
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -179,9 +357,9 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 		$after_title  = $settings['animated_headline_after_title'];
 		?>
         <section class="cd-intro">
-        <h1 class="cd-headline clip is-full-width">
-            <span><?php echo esc_attr( $before_title ); ?></span>
-            <span class="cd-words-wrapper">
+            <h1 class="cd-headline clip is-full-width">
+                <span class="before_title"><?php echo esc_attr( $before_title ); ?></span>
+                <span class="cd-words-wrapper">
                 <?php
                 $i = "";
                 foreach ( $settings['animated_headline_list'] as $animated_headline_list ):
@@ -189,12 +367,13 @@ class Animated_Headline_Elementor_Widget extends \Elementor\Widget_Base {
 	                $i ++;
 	                $clip_title = $animated_headline_list['animated_headline_title'];
 	                ?>
-                    <b class="is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
+                    <b class="animated_style is-<?php echo esc_attr( $class ); ?>"><?php echo esc_attr( $clip_title ); ?></b>
                 <?php endforeach; ?>
 			</span>
-            <span><?php echo esc_attr( $after_title ); ?></span>
-        </h1>
-        </section><?php
+                <span class="after_title"><?php echo esc_attr( $after_title ); ?></span>
+            </h1>
+        </section>
+		<?php
 
 	}
 

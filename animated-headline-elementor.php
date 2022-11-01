@@ -8,8 +8,8 @@
  * Author URI:  https://github.com/habibur899
  * Text Domain: animated-headline-elementor
  *
- * Elementor tested up to: 3.7.0
- * Elementor Pro tested up to: 3.7.0
+ * Elementor tested up to: 3.8.0
+ * Elementor Pro tested up to: 3.8.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
